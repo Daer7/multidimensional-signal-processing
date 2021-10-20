@@ -17,10 +17,12 @@ o_matrix = np.zeros(perfect_image.shape)
 
 for i in range(n_iter):
     noise = np.random.normal(0, 1, perfect_image.shape)
+    print(np.max(noise))
     n_image = perfect_image + noise
     o_image = np.copy(perfect_image)
 
     n_image -= np.min(n_image)
+
     n_image /= np.max(n_image)
     n_image = np.clip(n_image, 0, 1)
     n_dimg = np.rint(n_image * N)
@@ -49,5 +51,4 @@ print(np.min(o_matrix), np.max(o_matrix), np.min(n_matrix), np.max(n_matrix))
 plt.tight_layout()
 plt.savefig('task.png')
 
-# Lepiej odwzorowany jest obraz w wersji zaszumionej (mimo niewielkiej głębi obrazu),
-#
+# Lepiej odwzorowany jest obraz w wersji zaszumionej (mimo niewielkiej głębi obrazu).
