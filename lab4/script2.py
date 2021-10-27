@@ -40,11 +40,15 @@ ax[5, 0].imshow(sine3_img)
 ax[5, 1].plot(sine3)
 
 gamma1 = baseline ** (1 / 3)
+gamma1 -= np.min(gamma1)
+gamma1 /= np.max(gamma1)
 gamma1_img = gamma1[img_g]
 ax[6, 0].imshow(gamma1_img)
 ax[6, 1].plot(gamma1)
 
 gamma2 = baseline ** 5
+gamma2 -= np.min(gamma2)
+gamma2 /= np.max(gamma2)
 gamma2_img = gamma2[img_g]
 ax[7, 0].imshow(gamma2_img)
 ax[7, 1].plot(gamma2)
