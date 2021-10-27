@@ -53,7 +53,7 @@ def interp_cubic(x_source, y_source, x_target):
     beta = np.diff(a) / h
     alpha = np.empty(n)
     for i in range(1, n):
-        alpha[i] = 3 * beta[i] - beta[i - 1]
+        alpha[i] = 3 * (beta[i] - beta[i - 1])
 
     c = np.empty(m)
     l = np.empty(m)
@@ -73,7 +73,7 @@ def interp_cubic(x_source, y_source, x_target):
 
     for j in range(n - 1, -1, -1):
         c[j] = z[j] - mu[j] * c[j + 1]
-        b[j] = beta[j] - h[j] * (c[j + 1] + 2 * c[j]) / 3
+        b[j] = beta[j] - (h[j] * (c[j + 1] + 2 * c[j])) / 3
         d[j] = (c[j + 1] - c[j]) / (3 * h[j])
 
     dist = x_source[:, np.newaxis] - x_target[np.newaxis, :]
